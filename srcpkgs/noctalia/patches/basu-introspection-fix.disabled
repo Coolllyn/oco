@@ -6,10 +6,7 @@
    TEST_CHECK(introXml.contains(R"(<signal name="NotificationReplied">)"));
 -  TEST_CHECK(introXml.contains(R"(<arg type="u" name="id"/>)"));
 -  TEST_CHECK(introXml.contains(R"(<arg type="s" name="text"/>)"));
-+  // sd-bus implementations older than v242 (e.g. basu on Void Linux) never emit
-+  // argument names in introspection XML, and sdbus-c++ only fills vtable arg
-+  // names when built against libsystemd >= 242. Validate the (uint32, string)
-+  // signature inside the NotificationReplied signal body, with or without names.
++  // Pre-v242 sd-bus omits arg names in introspection; accept both.
 +  const auto sigStart = introXml.find(R"(<signal name="NotificationReplied">)");
 +  TEST_CHECK(sigStart != std::string::npos);
 +  const auto sigEnd = introXml.find(R"(</signal>)", sigStart);
