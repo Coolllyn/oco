@@ -1,4 +1,4 @@
---- a/tests/notification_reply_integration_test.cpp
+basu-introspection-fix.disabled--- a/tests/notification_reply_integration_test.cpp
 +++ b/tests/notification_reply_integration_test.cpp
 @@ -65,8 +65,17 @@
 
